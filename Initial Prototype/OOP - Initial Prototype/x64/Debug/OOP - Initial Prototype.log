@@ -1,0 +1,4 @@
+﻿  MainMenu.cpp
+C:\Users\fdemp\Desktop\Initial Prototype\Initial Prototype\OOP - Initial Prototype\MainMenu.cpp(63,3): warning C4551: function call missing argument list
+C:\Users\fdemp\Desktop\Initial Prototype\Initial Prototype\OOP - Initial Prototype\MainMenu.cpp(68): warning C4715: 'MainMenu::HandleChoice': not all control paths return a value
+  OOP - Initial Prototype.vcxproj -> C:\Users\fdemp\Desktop\Initial Prototype\Initial Prototype\x64\Debug\OOP - Initial Prototype.exe
