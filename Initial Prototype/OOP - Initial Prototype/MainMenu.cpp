@@ -25,44 +25,51 @@ void MainMenu::OutputOptions()
 
 bool MainMenu::HandleChoice(char choice)
 {
-	switch (choice)
+	bool wantsToExit = false;
+	while (!wantsToExit)
 	{
-	case 'S':
-	{
-		StoreMenu("STORE", app);
-	} break;
-	case 'L':
-	{
-		if (app->IsUserLoggedIn())
+		switch (choice)
 		{
-			std::string answer = Question("Are you sure?");
-			if (answer == "y" || answer == "Y")
+		case 'S':
+		{
+			StoreMenu("STORE", app);
+		} break;
+		case 'L':
+		{
+			if (app->IsUserLoggedIn())
 			{
-				app->LogoutUser();
+				std::string answer = Question("Are you sure?");
+				if (answer == "y" || answer == "Y")
+				{
+					app->LogoutUser();
+				}
 			}
-		}
-		else
+			else
+			{
+				// this would need to go to a LoginMenu - similar to StoreMenu
+				// instead we just set logged in to true on the main app object
+				//LoginUserMenu("Login", app);
+				LoginUserMenu("Login", app);
+			}
+		} break;
+		case 'P':
 		{
-			// this would need to go to a LoginMenu - similar to StoreMenu
-			// instead we just set logged in to true on the main app object
-			//LoginUserMenu("Login", app);
-			LoginUserMenu("Login", app);
-		}
-	} break;
-	case 'P':
-	{
-		if (app->IsUserLoggedIn())
+			if (app->IsUserLoggedIn())
+			{
+				BlockingMessage("Not implemented, press return to continue");
+				// this needs to go to a profile page - similar to StoreMenu
+				// notice the if - this only works if somebody is logged in
+			}
+		} break;
+		case 'X':
 		{
-			BlockingMessage("Not implemented, press return to continue");
-			// this needs to go to a profile page - similar to StoreMenu
-			// notice the if - this only works if somebody is logged in
-		}
-	} break;
-	case 'X':
-	{
-		fclose;
-	} break;
+			wantsToExit = true;
+			return true;
+		} break;
 
-	return false;
+		
+		}
+		return false;
 	}
+	
 }

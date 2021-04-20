@@ -2,6 +2,7 @@
 #include "Menu.h"
 #include "Utils.h"
 #include "MainMenu.h"
+#include "Application.h"
 
 class LoginUserMenu : public Menu
 {
@@ -11,9 +12,6 @@ public:
 	bool HandleChoice(char choice) final;
 	
 private:
-	bool CheckUsername(std::string& username);
-	bool CheckPassword(std::string& password);
 	std::string username;
-	std::string password;
 };
 
