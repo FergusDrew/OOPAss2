@@ -1,0 +1,12 @@
+﻿  GameMenu.cpp
+  LoginUserMenu.cpp
+  MainMenu.cpp
+  Menu.cpp
+  Source.cpp
+  StoreMenu.cpp
+C:\Users\fdemp\Documents\Year 2\OOP\Ass2\Initial Prototype\OOP - Initial Prototype\StoreMenu.cpp(16,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Utils.cpp
+C:\Users\fdemp\Documents\Year 2\OOP\Ass2\Initial Prototype\OOP - Initial Prototype\Utils.cpp(17,11): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+C:\Users\fdemp\Documents\Year 2\OOP\Ass2\Initial Prototype\OOP - Initial Prototype\MainMenu.cpp(76): warning C4715: 'MainMenu::HandleChoice': not all control paths return a value
+  OOP - Initial Prototype.vcxproj -> C:\Users\fdemp\Documents\Year 2\OOP\Ass2\Initial Prototype\x64\Debug\OOP - Initial Prototype.exe
