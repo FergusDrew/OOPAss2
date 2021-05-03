@@ -2,6 +2,7 @@
 
 #include "Account.h"
 #include "User.h"
+#include "Player.h"
 #include "Store.h"
 
 class Application
@@ -14,9 +15,12 @@ class Application
 		bool IsUserLoggedIn() const;
 		Account* GetCurrentAccount() const;
 		User* GetCurrentUser() const;
+		Game* GetSelectedGame() const;
 
+		Player* GetPlayerLibrary();
 		Store& GetStore();
-
+		
+		bool SelectGame(const std::string& name);
 		bool LoginAccount(const std::string& email, const std::string& password);
 		bool LoginUser(const std::string& username, const std::string& password);
 		void LogoutUser();
@@ -24,6 +28,8 @@ class Application
 		Account* accounts[1] = { }; // TODO: this needs changing to a dynamic collection
 	private:
 		Store store;
+		Player* playerLibrary;
 		Account* currentAccount;
 		User* currentUser;
+		Game* selectedGame;
 };

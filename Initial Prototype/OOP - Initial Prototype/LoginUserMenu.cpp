@@ -26,7 +26,7 @@ bool LoginUserMenu::HandleChoice(char choice)
 		{
 			return true;
 		}
-		else BlockingMessage("Incorrect Password");
+		else BlockingMessage("Incorrect Password...Try Again");
 	}
 	return false;
 }

@@ -1,5 +1,2 @@
-﻿  LoginUserMenu.cpp
-  MainMenu.cpp
-  Generating Code...
-C:\Users\fdemp\Documents\Year 2\OOP\Ass2\Initial Prototype\OOP - Initial Prototype\MainMenu.cpp(75): warning C4715: 'MainMenu::HandleChoice': not all control paths return a value
+﻿  ProfileMenu.cpp
   OOP - Initial Prototype.vcxproj -> C:\Users\fdemp\Documents\Year 2\OOP\Ass2\Initial Prototype\x64\Debug\OOP - Initial Prototype.exe

@@ -19,7 +19,12 @@ const std::string& Game::GetDescription() const
 	return description;
 }
 
-int Game::GetCost() const
+const int& Game::GetCost() const
 {
 	return cost;
+}
+
+const int& Game::GetRating() const
+{
+	return ageRating;
 }

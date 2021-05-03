@@ -23,6 +23,11 @@ void createHardcodedTestData()
 	app.GetStore().games[6] = new Game("Half Life 3", "It's never coming out.", 5999, 18);
 	app.GetStore().games[7] = new Game("NUVAVULT", "A game where 2D and 3D collide.", 299, 18);
 	app.GetStore().games[8] = new Game("Path", "Draw nice shapes between 2 big dots.", 299, 15);
+	app.GetStore().games[9] = new Game("Dota 2", "Original Lane based Moba.", 499, 12);
+	app.GetStore().games[10] = new Game("Rocket League", "Rocket Car Football.", 1299, 12);
+	app.GetStore().games[11] = new Game("Chess", "Turn based tactical thinking.", 1599, 5);
+	app.GetStore().games[12] = new Game("Mario Kart", "Car racing with a twist.", 2599, 5);
+	app.GetStore().games[13] = new Game("Covid-inc", "Make a virus, Kill the Humanity!", 1599, 15);
 
 	// Create some users
 	Player* u1 = new Admin("Alice", "password", "2018-06-16");

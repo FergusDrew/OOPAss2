@@ -32,9 +32,32 @@ User* Application::GetCurrentUser() const
 	return currentUser;
 }
 
+Player* Application::GetPlayerLibrary()
+{
+	return playerLibrary;
+}
+
 Store& Application::GetStore()
 {
 	return store;
+}
+
+Game* Application::GetSelectedGame() const
+{
+	return selectedGame;
+}
+
+bool Application::SelectGame(const std::string& name)
+{
+	for (int i = 0; i < 14; i++) 
+	{
+		if (GetStore().games[i]->GetName() == name)
+		{
+			selectedGame = GetStore().games[i];
+			return true;
+		}
+	}
+	return nullptr;
 }
 
 bool Application::LoginAccount(const std::string& email, const std::string& password)
@@ -47,10 +70,19 @@ bool Application::LoginAccount(const std::string& email, const std::string& pass
 
 bool Application::LoginUser(const std::string& username, const std::string& password)
 {
-	// TODO: This currently always logs you in as the first user
-	currentUser = currentAccount->users[0];
+	std::string curUsername = username;
+	std::string curUserPass = password;
 
-	return true;
+	for (int i = 0; i < 3; i++) // TODO: Hardcoded, change when using List<T>
+	{
+		if (GetCurrentAccount()->users[i]->GetUsername() == username && GetCurrentAccount()->users[i]->GetPassword() == password)
+		{
+			currentUser = GetCurrentAccount()->users[i];
+			return true;
+		}
+	}
+	currentUser = nullptr;
+	return false;
 }
 
 void Application::LogoutUser()

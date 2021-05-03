@@ -5,9 +5,12 @@
 class User
 {
 	public:
+		User();
 		User(const std::string&, const std::string&, const std::string&);
 		virtual ~User();
 		const std::string& GetUsername() const;
+		const std::string& GetPassword() const;
+		const std::string& GetCreated() const;
 	private:
 		std::string username;
 		std::string password;

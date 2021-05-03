@@ -1,6 +1,8 @@
 #pragma once
 #include "Menu.h"
 #include "StoreMenu.h"
+#include "LoginUserMenu.h"
+#include "ProfileMenu.h"
 
 class MainMenu : public Menu
 {
