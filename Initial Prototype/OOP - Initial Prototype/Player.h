@@ -3,6 +3,7 @@
 #include <string>
 #include "LibraryItem.h"
 #include "User.h"
+#include "List.h"
 
 class Player : public User
 {
@@ -10,6 +11,7 @@ class Player : public User
 		Player();
 		Player(const std::string&, const std::string&, const std::string&);
 		~Player();
-		LibraryItem* library[2] = { }; // TODO: replace with custom List<T> class
+		//LibraryItem* library[2] = { }; // TODO: replace with custom List<T> class
+		List<LibraryItem*> library;
 	private:
 };

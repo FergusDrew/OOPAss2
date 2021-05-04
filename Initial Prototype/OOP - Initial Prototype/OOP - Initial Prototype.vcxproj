@@ -171,6 +171,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameMenu.h" />
     <ClInclude Include="LibraryItem.h" />
+    <ClInclude Include="List.h" />
     <ClInclude Include="LoginUserMenu.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Menu.h" />
@@ -180,6 +181,9 @@
     <ClInclude Include="StoreMenu.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="Utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="data.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

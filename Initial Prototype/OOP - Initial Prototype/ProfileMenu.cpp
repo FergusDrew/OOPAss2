@@ -8,15 +8,18 @@ ProfileMenu::ProfileMenu(const std::string& title, Application* app) : Menu(titl
 void ProfileMenu::OutputOptions()
 {
 	Player* player = dynamic_cast<Player*>(app->GetCurrentUser());
+	int length = player->library.length();
 	Line("Credits: " + Utils::CastToCredit(credits));
 	Option('I', "Purchase 1 credit");
 	Option('O', "Purchase 10 credits");
 	Option('P', "Purchase 100 credits");
 	Line();
 	Line("GAMES");
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < length; i++)
 	{
-		Option(i + 1, player->library[i]->GetGame()->GetName());
+		Option(i + 1, player->library.getAt(i)->GetGame()->GetName());
+		
+		//Option(i + 1, player->library->->GetGame()->GetName());
 	}
 }
 

@@ -1,5 +1,5 @@
 #pragma once
-
+#include "List.h"
 #include "Game.h"
 
 class Store
@@ -7,8 +7,8 @@ class Store
 	public:
 		Store();
 		~Store();
-
-		Game* games[14] = { }; // TODO: should be a dynamic collection
+		List<Game*> games;
+		//Game* games[14] = { }; // TODO: should be a dynamic collection
 	private:
 
 };

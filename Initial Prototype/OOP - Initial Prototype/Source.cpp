@@ -7,27 +7,32 @@
 #include "Admin.h"
 #include "Utils.h"
 #include "MainMenu.h"
+#include <fstream>
+#include <sstream>
+
+using namespace std;
 
 // TODO: Remove from global scope once menu system is integrated
 Application app;
 
 void createHardcodedTestData()
 {
-	// Setup store with some games
-	app.GetStore().games[0] = new Game("The Witness", "Explore a nice island and solve puzzles.", 2999, 5);
-	app.GetStore().games[1] = new Game("Braid", "A time twisting puzzle game.", 499, 15);
-	app.GetStore().games[2] = new Game("Factorio", "Build a complicated factory in space.", 1599, 12);
-	app.GetStore().games[3] = new Game("LIMBO", "Watch out for that spider.", 299, 12);
-	app.GetStore().games[4] = new Game("INSIDE", "What are those scientists even doing?!", 1299, 15);
-	app.GetStore().games[5] = new Game("Portal 2", "Play around with physics. Shoot the moon.", 1999, 15);
-	app.GetStore().games[6] = new Game("Half Life 3", "It's never coming out.", 5999, 18);
-	app.GetStore().games[7] = new Game("NUVAVULT", "A game where 2D and 3D collide.", 299, 18);
-	app.GetStore().games[8] = new Game("Path", "Draw nice shapes between 2 big dots.", 299, 15);
-	app.GetStore().games[9] = new Game("Dota 2", "Original Lane based Moba.", 499, 12);
-	app.GetStore().games[10] = new Game("Rocket League", "Rocket Car Football.", 1299, 12);
-	app.GetStore().games[11] = new Game("Chess", "Turn based tactical thinking.", 1599, 5);
-	app.GetStore().games[12] = new Game("Mario Kart", "Car racing with a twist.", 2599, 5);
-	app.GetStore().games[13] = new Game("Covid-inc", "Make a virus, Kill the Humanity!", 1599, 15);
+	// Setup store with some gamess
+	/*
+	app.GetStore().games.addInFront(new Game(0, "The Witness", "Explore a nice island and solve puzzles.", 2999, 5));
+	app.GetStore().games.addInFront(new Game(1, "Braid", "A time twisting puzzle game.", 499, 15));
+	app.GetStore().games.addInFront(new Game(1, "Factorio", "Build a complicated factory in space.", 1599, 12));
+	app.GetStore().games.addInFront(new Game(2, "LIMBO", "Watch out for that spider.", 299, 12));
+	app.GetStore().games.addInFront(new Game(3, "INSIDE", "What are those scientists even doing?!", 1299, 15));
+	app.GetStore().games.addInFront(new Game(4, "Portal 2", "Play around with physics. Shoot the moon.", 1999, 15));
+	app.GetStore().games.addInFront(new Game(5, "Half Life 3", "It's never coming out.", 5999, 18));
+	app.GetStore().games.addInFront(new Game(6, "NUVAVULT", "A game where 2D and 3D collide.", 299, 18));
+	app.GetStore().games.addInFront(new Game(7, "Path", "Draw nice shapes between 2 big dots.", 299, 15));
+	app.GetStore().games.addInFront(new Game(8, "Dota 2", "Original Lane based Moba.", 499, 12));
+	app.GetStore().games.addInFront(new Game(9, "Rocket League", "Rocket Car Football.", 1299, 12));
+	app.GetStore().games.addInFront(new Game(10, "Chess", "Turn based tactical thinking.", 1599, 5));
+	app.GetStore().games.addInFront(new Game(11, "Mario Kart", "Car racing with a twist.", 2599, 5));
+	app.GetStore().games.addInFront(new Game(12, "Covid-inc", "Make a virus, Kill the Humanity!", 1599, 15));*/
 
 	// Create some users
 	Player* u1 = new Admin("Alice", "password", "2018-06-16");
@@ -35,12 +40,12 @@ void createHardcodedTestData()
 	Player* u3 = new Player("Charlie", "password", "2018-09-24");
 
 	// With some games in their library
-	u1->library[0] = new LibraryItem("2018-06-17", app.GetStore().games[7]);
-	u1->library[1] = new LibraryItem("2018-06-18", app.GetStore().games[1]);
-	u2->library[0] = new LibraryItem("2018-09-19", app.GetStore().games[2]);
-	u2->library[1] = new LibraryItem("2018-09-19", app.GetStore().games[3]);
-	u3->library[0] = new LibraryItem("2018-09-24", app.GetStore().games[3]);
-	u3->library[1] = new LibraryItem("2018-09-30", app.GetStore().games[6]);
+	u1->library.addInFront(new LibraryItem("2018-06-17", app.GetStore().games.getAt(7)));
+	u1->library.addInFront(new LibraryItem("2018-06-18", app.GetStore().games.getAt(1)));
+	u2->library.addInFront(new LibraryItem("2018-09-19", app.GetStore().games.getAt(2)));
+	u2->library.addInFront(new LibraryItem("2018-09-19", app.GetStore().games.getAt(3)));
+	u3->library.addInFront(new LibraryItem("2018-09-24", app.GetStore().games.getAt(3)));
+	u3->library.addInFront(new LibraryItem("2018-09-30", app.GetStore().games.getAt(6)));
 
 	// Make an account and attach the users
 	app.accounts[0] = new Account("alice@shu.com", "password", "2018-06-16");
@@ -51,6 +56,57 @@ void createHardcodedTestData()
 	// TODO: We need a login menu for accounts, for now we log in the only account
 	app.LoginAccount("alice@shu.ac.uk", "password");
 }
+
+void readFileData()
+{
+	int i;
+	ifstream data("data.txt");
+	string line;
+
+
+	while (getline(data, line))
+	{
+		if (line == "GAME")
+		{
+			int id;
+			string name;
+			string desc;
+			int price;
+			int ageRating;
+
+			for (i = 0; i < 5; i++)
+			{
+				getline(data, line);
+				switch (i)
+				{
+				case 0:
+					id = stoi(line);
+					break;
+				case 1:
+					name = line;
+					break;
+				case 2:
+					desc = line;
+					break;
+				case 3:
+					price = stoi(line);
+					break;
+				case 4:
+					ageRating = stoi(line);
+					break;
+				default:
+					break;
+				}
+			}
+				
+			
+			app.GetStore().games.addInFront(new Game(id, name, desc, price, ageRating));
+		}
+	}
+
+}
+
+
 /*
 char showMainMenuAndGetUserChoice()
 {
@@ -262,7 +318,9 @@ void mainMenu()
 void main()
 {
 	// TODO: Remove call to dummy data, instead use Load and Save
+	readFileData();
 	createHardcodedTestData();
+	
 	MainMenu("Main Menu", &app);
 	// TODO: app.Load();
 	//mainMenu(); // TODO: replace with proper menu system

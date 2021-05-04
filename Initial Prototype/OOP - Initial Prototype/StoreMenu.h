@@ -14,6 +14,5 @@ public:
 	bool HandleChoice(char choice) final;
 private:
 	int page = 0;
-	//std::string games[9] = {};
-	//std::vector<std::string> games = { "Factorio", "The Witness", "INSIDE", "Brothers" };
+	//List<std::string> games;
 };

@@ -51,9 +51,9 @@ bool Application::SelectGame(const std::string& name)
 {
 	for (int i = 0; i < 14; i++) 
 	{
-		if (GetStore().games[i]->GetName() == name)
+		if (GetStore().games.getAt(i)->GetName() == name)
 		{
-			selectedGame = GetStore().games[i];
+			selectedGame = GetStore().games.getAt(i);
 			return true;
 		}
 	}
