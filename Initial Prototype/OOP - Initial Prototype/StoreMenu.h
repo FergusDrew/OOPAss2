@@ -13,6 +13,7 @@ public:
 	void OutputOptions() final;
 	bool HandleChoice(char choice) final;
 private:
-	int page = 0;
+	int numOfPages = 0;
+	int page = 1;
 	//List<std::string> games;
 };

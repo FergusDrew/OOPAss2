@@ -4,16 +4,22 @@
 template <typename T>
 struct node
 {
+    node(const T& data);
     T data;
     node* next;
 };
+
+template <class T>
+node<T>::node(const T& data) : data(data), next(nullptr)
+{
+}
 
 template <typename T>
 class List
 {
 public:
     ~List();                            //Destructor                            [X]
-    bool isEmpty() const;                     //Bool check if list is empty           [X]
+    bool isEmpty() const;               //Bool check if list is empty           [X]
     const T first() const;              //Return first item in list             [X]
     const T last() const;               //Return last item in list              [X]
     void addInFront(const T&);          //Insert an item infront                [X]
@@ -28,50 +34,36 @@ public:
     T getAt(int pos);                   //Get value at position                 [ ]                                                                  
 private: 
     node<T>* start;                     //Points onto first item
-    node<T>* end;                       //Return address of last item
+    node<T>* end() const;                       //Return address of last item
     void destroy();                     //Delete all items in list              [X]
     void copy(const List<T>&);          //Make a copy of the list
 };
 
-template <typename T>
+template <class T>
 bool List<T>::isEmpty() const
 {
-    if (start == nullptr) return true;
-    return false;
+    return start == nullptr;
 }
 
-template <typename T>
+template <class T>
 const T List<T>::first() const
 {
-    node<T>* temp = new node<T>;
-    if (isEmpty()) return;
-
-    temp = start;
-    return temp;
+    assert(start != nullptr);
+    return start->data;
 }
 
-template <typename T>
+template <class T>
 const T List<T>::last() const
 {
-    node<T>* temp = new node<T>;
-    if (isEmpty()) return;
-
-    temp = start;
-    while (temp->next != nullptr)
-    {
-        temp = temp->next;
-    }
-    temp = end;
-    return end;
+    assert(start != nullptr);
+    return end()->item;
 }
 
 template <typename T>
 void List<T>::addInFront(const T& val)
 {
     //Create a node with data to add
-    node<T> *temp; 
-    temp = new node<T>;
-    temp->data = val;
+    node<T> *temp = new node<T>(val); 
     assert(temp != nullptr); //ensure new node is not null
     temp->next = start; //Set the next node of new node as the head
     start = temp; //Set the head to point at new node
@@ -80,32 +72,47 @@ void List<T>::addInFront(const T& val)
 template <typename T>
 void List<T>::addAtPos(int pos, const T& val)
 {
-    node<T>* prev = new node<T>; //holds previous node
-    node<T>* curr = new node<T>; //holds current node
-    node<T> *temp;
-    temp = new node<T>; //holds new node with data to be added
-    temp->data = val;
-    curr = start; //set current node at the start
-    for (int i = 1; i < pos; i++)
+    if (pos == 0)
     {
-        prev = curr; //previous node stores current node
-        curr = curr->next; //current node moves to next node
+        addInFront(val);
     }
-    temp->next = curr; //once at posiotion, set new node to be added to point at next node
-    prev->next = temp; //set previous node to point at new node
+    else if (pos == 1 && length() == 1)
+    {
+        addAtEnd(val);
+    }
+    else 
+    {
+        node<T>* prev; //holds previous node
+        node<T>* curr; //holds current node
+        curr = start; //set current node at the start
+        prev = start;
+        for (int i = 1; i < pos; i++)
+        {
+            prev = curr; //previous node stores current node
+            curr = curr->next; //current node moves to next node
+        }
+        node<T>* temp = new node<T>(val);
+        temp->next = curr; //once at posiotion, set new node to be added to point at next node
+        prev->next = temp; //set previous node to point at new node
+    }
+
 }
 
 template <typename T>
 void List<T>::addAtEnd(const T& val)
 {
-    node<T>* temp;
-    temp = new node<T>; //holds new node with data to be added
-    temp->data = val;
-    node<T>* prev = new node<T>; //holds end node
+    //Create a node with data to add
+    node<T>* temp = new node<T>(val);
+    assert(temp != nullptr); //ensure new node is not null
 
-    prev = end; //holds end
-    prev->next = temp; //sets old end to point at new node
-    end = temp; //sets end to point at new node
+    if (start == nullptr)
+    {
+        start = temp;
+    }
+    else
+    {
+        end()->next = temp;
+    }
 }
 
 
@@ -132,25 +139,50 @@ int List<T>::length() const
         length += 1;
         temp = temp->next;
     }
-
     return length;
 }
 
 template <typename T>
 T List<T>::getAt(int pos)
 {
-    node<T>* prev = new node<T>; //holds previous node
-    node<T>* curr = new node<T>; //holds current node
+    node<T>* curr; //holds current node
     curr = start; //set current node at the start
     for (int i = 1; i <= pos; i++)
     {
-        prev = curr; //previous node stores current node
         curr = curr->next; //current node moves to next node
     }
-
+    
     return curr->data;
 }
 
+template <class T>
+bool List<T>::contains(const T& val) const
+{
+    for (node<T>* pn = start; pn != nullptr; pn = pn->next)
+    {
+        if (pn->data == val)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+// private support operations
+// --------------------------
+template <class T>
+node<T>* List<T>::end() const
+{
+    node<T>* plast = start;
+
+    while (plast->next != nullptr)
+    {
+        plast = plast->next;
+    }
+
+    return plast;
+}
 
 template <typename T>
 void List<T>::destroy()
@@ -158,6 +190,25 @@ void List<T>::destroy()
     while (!isEmpty()) //clears list
     {
         deleteFirst();
+    }
+}
+
+template <class T>
+void List<T>::copy(const List<T>& other)
+{
+    assert(start == nullptr);
+
+    if (other.start == nullptr) return;
+
+    start = new node<T>(other.start->item);
+    assert(start != nullptr);
+
+    node<T>* pnew = start;
+    for (node<T>* porig = other.start->next; porig != nullptr; porig = porig->next)
+    {
+        pnew->next = new node<T>(porig->item);
+        assert(pnew->next != nullptr);
+        pnew = pnew->next;
     }
 }
 

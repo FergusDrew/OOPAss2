@@ -10,15 +10,15 @@
 #include <fstream>
 #include <sstream>
 
-using namespace std;
-
+ 
 // TODO: Remove from global scope once menu system is integrated
 Application app;
 
 void createHardcodedTestData()
 {
-	// Setup store with some gamess
 	/*
+	// Setup store with some gamess
+	
 	app.GetStore().games.addInFront(new Game(0, "The Witness", "Explore a nice island and solve puzzles.", 2999, 5));
 	app.GetStore().games.addInFront(new Game(1, "Braid", "A time twisting puzzle game.", 499, 15));
 	app.GetStore().games.addInFront(new Game(1, "Factorio", "Build a complicated factory in space.", 1599, 12));
@@ -33,80 +33,28 @@ void createHardcodedTestData()
 	app.GetStore().games.addInFront(new Game(10, "Chess", "Turn based tactical thinking.", 1599, 5));
 	app.GetStore().games.addInFront(new Game(11, "Mario Kart", "Car racing with a twist.", 2599, 5));
 	app.GetStore().games.addInFront(new Game(12, "Covid-inc", "Make a virus, Kill the Humanity!", 1599, 15));*/
-
+/*
 	// Create some users
 	Player* u1 = new Admin("Alice", "password", "2018-06-16");
 	Player* u2 = new Player("Bob", "password", "2018-09-19");
 	Player* u3 = new Player("Charlie", "password", "2018-09-24");
 
 	// With some games in their library
-	u1->library.addInFront(new LibraryItem("2018-06-17", app.GetStore().games.getAt(7)));
-	u1->library.addInFront(new LibraryItem("2018-06-18", app.GetStore().games.getAt(1)));
-	u2->library.addInFront(new LibraryItem("2018-09-19", app.GetStore().games.getAt(2)));
-	u2->library.addInFront(new LibraryItem("2018-09-19", app.GetStore().games.getAt(3)));
-	u3->library.addInFront(new LibraryItem("2018-09-24", app.GetStore().games.getAt(3)));
-	u3->library.addInFront(new LibraryItem("2018-09-30", app.GetStore().games.getAt(6)));
+	u1->getLibrary().addInFront(new LibraryItem("2018-06-17", app.GetStore().games.getAt(7)));
+	u1->getLibrary().addInFront(new LibraryItem("2018-06-18", app.GetStore().games.getAt(1)));
+	u2->getLibrary().addInFront(new LibraryItem("2018-09-19", app.GetStore().games.getAt(2)));
+	u2->getLibrary().addInFront(new LibraryItem("2018-09-19", app.GetStore().games.getAt(3)));
+	u3->getLibrary().addInFront(new LibraryItem("2018-09-24", app.GetStore().games.getAt(3)));
+	u3->getLibrary().addInFront(new LibraryItem("2018-09-30", app.GetStore().games.getAt(6)));
 
 	// Make an account and attach the users
 	app.accounts[0] = new Account("alice@shu.com", "password", "2018-06-16");
 	app.accounts[0]->users[0] = u1;
 	app.accounts[0]->users[1] = u2;
 	app.accounts[0]->users[2] = u3;
-
 	// TODO: We need a login menu for accounts, for now we log in the only account
-	app.LoginAccount("alice@shu.ac.uk", "password");
+	app.LoginAccount("alice@shu.ac.uk", "password");*/
 }
-
-void readFileData()
-{
-	int i;
-	ifstream data("data.txt");
-	string line;
-
-
-	while (getline(data, line))
-	{
-		if (line == "GAME")
-		{
-			int id;
-			string name;
-			string desc;
-			int price;
-			int ageRating;
-
-			for (i = 0; i < 5; i++)
-			{
-				getline(data, line);
-				switch (i)
-				{
-				case 0:
-					id = stoi(line);
-					break;
-				case 1:
-					name = line;
-					break;
-				case 2:
-					desc = line;
-					break;
-				case 3:
-					price = stoi(line);
-					break;
-				case 4:
-					ageRating = stoi(line);
-					break;
-				default:
-					break;
-				}
-			}
-				
-			
-			app.GetStore().games.addInFront(new Game(id, name, desc, price, ageRating));
-		}
-	}
-
-}
-
-
 /*
 char showMainMenuAndGetUserChoice()
 {
@@ -317,12 +265,8 @@ void mainMenu()
 */
 void main()
 {
-	// TODO: Remove call to dummy data, instead use Load and Save
-	readFileData();
-	createHardcodedTestData();
-	
+	app.Load();
 	MainMenu("Main Menu", &app);
-	// TODO: app.Load();
-	//mainMenu(); // TODO: replace with proper menu system
+	
 	// TODO: app.Save();
 }

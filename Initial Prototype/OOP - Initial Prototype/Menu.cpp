@@ -1,5 +1,5 @@
 #include "Menu.h"
-#include "Dates.h"   //FOR TESTING DATES
+
 Menu::Menu(const std::string& title, Application* app) : title(title), app(app)
 {
 }
@@ -11,13 +11,6 @@ void Menu::Paint()
 	while (!readyToGoBack)
 	{
 		Header();
-
-		// REMOVE AFTER DATES TESTING
-		Dates m;
-		m.currentDate();
-		cout << m.GetYear() << "/" << m.GetMonth() << "/" << m.GetDay() <<"\n";
-
-
 		OutputOptions();
 		Line();
 		//MainMenu wont display 'back'
@@ -25,7 +18,6 @@ void Menu::Paint()
 		{ 
 		Option('B', "Back");
 		Footer();
-
 		}
 		else
 		{
@@ -42,7 +34,6 @@ void Menu::Paint()
 		{
 			readyToGoBack = HandleChoice(choice);
 		}
-
 	}
 }
 

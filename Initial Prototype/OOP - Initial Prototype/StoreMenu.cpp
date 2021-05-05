@@ -13,11 +13,14 @@ void StoreMenu::OutputOptions()
 	{
 		//Calculate number of pages needed
 		int numOfGames = (app->GetStore().games.length());
-		double i = (numOfGames % 5);
-		int numOfPages = ceil(i) - 1;
+
+		numOfPages = numOfGames / 5;
+		int i = (numOfGames / 5);
+		if (i > 0) numOfPages += 1;;
+	
 		//set current page at 1
 		//array items to be displayed
-		int x = page * 5;
+		int x = (page - 1) * 5;
 		for (int i = 0; i < 5; i++)
 		{
 			if (x >= numOfGames)
@@ -31,7 +34,7 @@ void StoreMenu::OutputOptions()
 			}
 		}
 		Line();
-		Line("PAGE " + std::to_string(page + 1) + " OF " + std::to_string(numOfPages));
+		Line("PAGE " + std::to_string(page) + " OF " + std::to_string(numOfPages));
 		Option('S', "Search");
 		if (page < numOfPages - 1) Option('N', "Next Page");
 		if (page >= 1) Option('P', "Previous Page");
@@ -58,11 +61,11 @@ bool StoreMenu::HandleChoice(char choice)
 	} break;
 	case 'N':
 	{
-		page++;
+		if (page < numOfPages) page++;
 	} break;
 	case 'P':
 	{
-		page--;
+		if (page > 1) page--;
 	} break;
 	}
 	int index = choice - '1';
