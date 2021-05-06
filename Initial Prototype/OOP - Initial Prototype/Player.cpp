@@ -1,18 +1,16 @@
 #include "Player.h"
-Player::Player(const std::string& username, const std::string& password, const std::string& created, int credit, std::string role) : User(username, password, created)
+
+Player::Player(const std::string& username, const std::string& password, const std::string& created, int credit, const std::string&role) : User(username, password, created)
 {
 
 }
 
 Player::~Player()
 {
-	for (int i = 0; i < 2; ++i)
-	{
-		library;
-	}
+	library;
 }
 
-/*const int& Player::GetCredit() const
+const int& Player::GetCredit() const
 {
 	return credit;
 }
@@ -20,9 +18,14 @@ Player::~Player()
 const std::string& Player::GetRole() const
 {
 	return role;
-}*/
+}
 
 List<LibraryItem*> Player::getLibrary() const
 {
 	return library;
+}
+
+void Player::addLibraryItem(LibraryItem* item)
+{
+	library.addAtEnd(item);
 }

@@ -5,7 +5,7 @@
 class LibraryItem
 {
 	public:
-		LibraryItem(const std::string&, Game*);
+		LibraryItem(const std::string&, Game*, int playtime);
 		~LibraryItem();
 		Game* GetGame();
 		const std::string& GetPurchaseDate() const;

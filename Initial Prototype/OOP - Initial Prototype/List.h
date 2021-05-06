@@ -31,10 +31,11 @@ public:
     void deleteOne(const T&);           //Delete first occurrence of item       [ ]
     int length() const;                 //Return Length                         [X]
     bool contains(const T&) const;      //Check if an item is in the list       [ ]
-    T getAt(int pos);                   //Get value at position                 [ ]                                                                  
+    T getAt(int pos);                   //Get value at position                 [ ]  
+    node<T>* getNext(int pos) const;    //Return next node pointer              [X]
 private: 
     node<T>* start;                     //Points onto first item
-    node<T>* end() const;                       //Return address of last item
+    node<T>* end() const;               //Return address of last item
     void destroy();                     //Delete all items in list              [X]
     void copy(const List<T>&);          //Make a copy of the list
 };
@@ -153,6 +154,19 @@ T List<T>::getAt(int pos)
     }
     
     return curr->data;
+}
+
+template <typename T>
+node<T>* List<T>::getNext(int pos) const
+{
+    node<T>* curr; //holds current node
+    curr = start; //set current node at the start
+    for (int i = 1; i <= pos; i++)
+    {
+        curr = curr->next; //current node moves to next node
+    }
+
+    return curr->next;
 }
 
 template <class T>

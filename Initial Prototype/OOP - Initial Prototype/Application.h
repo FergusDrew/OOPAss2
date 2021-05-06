@@ -11,7 +11,6 @@
 #include "Player.h"
 #include "Store.h"
 
-using namespace std;
 
 class Application
 {
@@ -31,7 +30,7 @@ class Application
 		bool LoginAccount(const std::string& email, const std::string& password);
 		bool LoginUser(const std::string& username, const std::string& password);
 		void LogoutUser();
-		vector <Account*> accounts;
+		std::vector <Account*> accounts;
 	private:
 		Store store;
 		Account* currentAccount;

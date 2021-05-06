@@ -10,6 +10,8 @@
 #include <fstream>
 #include <sstream>
 
+using namespace std;
+
  
 // TODO: Remove from global scope once menu system is integrated
 Application app;

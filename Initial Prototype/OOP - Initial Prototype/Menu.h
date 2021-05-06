@@ -1,9 +1,10 @@
 #pragma once
 #include "Utils.h"
 #include "Application.h"
-
 #include <iostream>
 #include <string>
+
+using namespace std;
 
 class Menu
 {

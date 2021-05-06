@@ -76,7 +76,7 @@ bool StoreMenu::HandleChoice(char choice)
 	//if (choice >= '1' || choice <= '5')
 	if (index >= 0 && index < app->GetStore().games.length())
 	{
-		index = index + (5 * page);
+		index = index + (5 * (page - 1));
 		app->SelectGame(app->GetStore().games.getAt(index)->GetName());
 		GameMenu(app->GetStore().games.getAt(index)->GetName(), app);
 	}

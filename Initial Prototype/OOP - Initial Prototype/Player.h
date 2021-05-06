@@ -8,15 +8,14 @@
 class Player : public User
 {
 	public:
-		Player();
-		Player(const std::string&, const std::string&, const std::string&, int, const std::string);
+		Player(const std::string&, const std::string&, const std::string&, int, const std::string&);
 		~Player();
-		//const int& GetCredit() const;
-		//const std::string& GetRole() const;
-		//LibraryItem* library[2] = { }; // TODO: replace with custom List<T> class
+		const int& GetCredit() const;
+		const std::string& GetRole() const;
 		List<LibraryItem*> getLibrary() const;
+		void addLibraryItem(LibraryItem* item);
 	private:
 		List<LibraryItem*> library;
-	//	int credit;
-		//std::string role;
+		int credit;
+		std::string role;
 };

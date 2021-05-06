@@ -22,3 +22,4 @@ const std::string& User::GetCreated() const
 {
 	return created;
 }
+
