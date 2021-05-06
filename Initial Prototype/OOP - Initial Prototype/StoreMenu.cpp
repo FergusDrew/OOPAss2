@@ -36,8 +36,8 @@ void StoreMenu::OutputOptions()
 		Line();
 		Line("PAGE " + std::to_string(page) + " OF " + std::to_string(numOfPages));
 		Option('S', "Search");
-		if (page < numOfPages - 1) Option('N', "Next Page");
-		if (page >= 1) Option('P', "Previous Page");
+		if (page < numOfPages) Option('N', "Next Page");
+		if (page >= 2) Option('P', "Previous Page");
 	}
 	else
 	{

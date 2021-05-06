@@ -44,8 +44,9 @@ bool ProfileMenu::HandleChoice(char choice)
 	return false;
 }
 
-int ProfileMenu::IncreaseCredits(int ammount) 
+const int ProfileMenu::IncreaseCredits(int ammount) 
 {
-	credits = credits + ammount;
-	return credits;
+	Player* player = dynamic_cast<Player*>(app->GetCurrentUser());
+	player->AddCredit(ammount);
+	return player->GetCredit();
 }

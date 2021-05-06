@@ -11,7 +11,7 @@ public:
 	ProfileMenu(const std::string& title, Application* app);
 	void OutputOptions() final;
 	bool HandleChoice(char choice) final;
-	int IncreaseCredits(int ammount);
+	const int IncreaseCredits(int ammount);
 private:
-	int credits = 0;
+	//const int credit = 0;
 };

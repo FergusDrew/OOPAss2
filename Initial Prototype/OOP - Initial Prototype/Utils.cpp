@@ -22,11 +22,11 @@ std::string Utils::CastToPrice(int price)
 	return num_str;
 }
 
-std::string Utils::CastToCredit(int credits)
+std::string Utils::CastToCredit(const int credits)
 {
-	int n1 = credits;
+	const int credit = credits;
 	std::stringstream sstream;
-	sstream << n1;
+	sstream << credit;
 	std::string num_str = sstream.str() + ".00";
 	return num_str;
 }

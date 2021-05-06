@@ -11,6 +11,9 @@ class User
 		const std::string& GetUsername() const;
 		const std::string& GetPassword() const;
 		const std::string& GetCreated() const;
+		virtual const int& GetCredit() const = 0;
+		virtual const std::string& GetRole() const = 0
+			;
 		
 	private:
 		std::string username;

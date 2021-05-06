@@ -12,6 +12,7 @@ class Player : public User
 		~Player();
 		const int& GetCredit() const;
 		const std::string& GetRole() const;
+		void AddCredit(int& val);
 		List<LibraryItem*> getLibrary() const;
 		void addLibraryItem(LibraryItem* item);
 	private:

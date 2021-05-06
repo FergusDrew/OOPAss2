@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player(const std::string& username, const std::string& password, const std::string& created, int credit, const std::string&role) : User(username, password, created)
+Player::Player(const std::string& username, const std::string& password, const std::string& created, int credit, const std::string&role) : User(username, password, created), credit(credit), role(role)
 {
 
 }
@@ -18,6 +18,11 @@ const int& Player::GetCredit() const
 const std::string& Player::GetRole() const
 {
 	return role;
+}
+
+void Player::AddCredit(int& val)
+{
+	credit = credit + val;
 }
 
 List<LibraryItem*> Player::getLibrary() const
