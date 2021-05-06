@@ -25,6 +25,11 @@ void Player::AddCredit(int& val)
 	credit = credit + val;
 }
 
+const List<LibraryItem*> Player::getPlayersLibrary() const
+{
+	return library;
+}
+
 List<LibraryItem*> Player::getLibrary() const
 {
 	return library;

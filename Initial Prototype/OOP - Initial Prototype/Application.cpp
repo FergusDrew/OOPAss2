@@ -332,6 +332,8 @@ bool Application::LoginUser(const std::string& username, const std::string& pass
 	}
 	currentUser = nullptr;
 	return false;
+
+	accounts.at(0)->users.getAt(0)->GetRole();
 }
 
 void Application::LogoutUser()

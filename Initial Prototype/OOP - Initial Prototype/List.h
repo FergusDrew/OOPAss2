@@ -116,7 +116,6 @@ void List<T>::addAtEnd(const T& val)
     }
 }
 
-
 template <typename T>
 void List<T>::deleteFirst()
 {

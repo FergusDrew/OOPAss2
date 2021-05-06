@@ -13,5 +13,7 @@ public:
 	bool HandleChoice(char choice) final;
 	const int IncreaseCredits(int ammount);
 private:
+	Player* player = dynamic_cast<Player*>(app->GetCurrentUser());
+	
 	//const int credit = 0;
 };

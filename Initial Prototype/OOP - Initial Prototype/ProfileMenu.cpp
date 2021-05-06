@@ -7,9 +7,13 @@ ProfileMenu::ProfileMenu(const std::string& title, Application* app) : Menu(titl
 
 void ProfileMenu::OutputOptions()
 {
-	Player* player = dynamic_cast<Player*>(app->GetCurrentUser());
-	List<LibraryItem*> items = player->getLibrary();
-	int length = items.length();
+	if (player->GetRole() == "Admin")
+	{
+		Line("-=ADMIN OPTIONS=-");
+		Option('A', "Add User");
+		Option('D', "Delete User");
+		Line();
+	}
 	Line("Credits: " + Utils::CastToCredit(player->GetCredit()));
 	Option('I', "Purchase 1 credit");
 	Option('O', "Purchase 10 credits");
@@ -17,7 +21,8 @@ void ProfileMenu::OutputOptions()
 	Line();
 	Line("GAMES");
 
-	for (int i = 0; i < length; i++)
+	List<LibraryItem*> items = player->getPlayersLibrary();
+	for (int i = 0; i < items.length(); i++)
 	{
 		Option(i + 1, items.getAt(i)->GetGame()->GetName());
 	}
@@ -25,8 +30,17 @@ void ProfileMenu::OutputOptions()
 
 bool ProfileMenu::HandleChoice(char choice)
 {
+	//Player* player = dynamic_cast<Player*>(app->GetCurrentUser());
 	switch (choice)
 	{
+	case 'A':
+	{
+		Line("Needs to be implemented");
+	} break;
+	case 'D':
+	{
+		Line("Needs to be implemented");
+	} break;
 	case 'I':
 	{
 		IncreaseCredits(1);
@@ -46,7 +60,6 @@ bool ProfileMenu::HandleChoice(char choice)
 
 const int ProfileMenu::IncreaseCredits(int ammount) 
 {
-	Player* player = dynamic_cast<Player*>(app->GetCurrentUser());
 	player->AddCredit(ammount);
 	return player->GetCredit();
 }
