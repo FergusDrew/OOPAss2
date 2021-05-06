@@ -39,22 +39,22 @@ void Player::addLibraryItem(LibraryItem* item)
 {
 	library.push_back(item);
 }
-//
-//bool Player::compareNames(std::string a, std::string b)
-//{
-//
-//}
-//
-//std::vector <LibraryItem*> Player::sortByDate() const
-//{
-//
-//}
-//std::vector <LibraryItem*> Player::sortByName() const
-//{
-//	for (int i = 0; i < library.size(); i++)
-//	{
-//		//populate vector of names with each game name
-//		std::vector<std::string> nameOrdered;
-//		nameOrdered.push_back(library.at(i)->GetGame()->GetName());
-//	}
-//}
+/*
+bool Player::compareNames(std::string a, std::string b)
+{
+
+}
+
+std::vector <LibraryItem*> Player::sortByDate() const
+{
+
+}
+std::vector <LibraryItem*> Player::sortByName() const
+{
+	for (int i = 0; i < library.size(); i++)
+	{
+		//populate vector of names with each game name
+		std::vector<std::string> nameOrdered;
+		nameOrdered.push_back(library.at(i)->GetGame()->GetName());
+	}
+}*/

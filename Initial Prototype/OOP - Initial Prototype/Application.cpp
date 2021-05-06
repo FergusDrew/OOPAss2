@@ -11,8 +11,10 @@ Application::~Application()
 		delete accounts[i];
 	}
 }
+
 void Application::Save()
 {
+
 	std::ofstream saveData;
 	saveData.open("data1.txt");
 	int numOfGames = (GetStore().games.length());
@@ -25,41 +27,58 @@ void Application::Save()
 		saveData << GetStore().games.getAt(i)->GetCost() << "\n";
 		saveData << GetStore().games.getAt(i)->GetRating() << "\n";
 	}
-	int numOfUsers = (GetCurrentAccount()->users.length());
-	for (int i = 0; i < numOfUsers; ++i)
+	//Number of Accounts -> first acc data
+	for (int i = 0; i < accounts.size(); i++)
 	{
-		if (GetCurrentAccount()->users.getAt(i)->GetRole() == "Player")
+		saveData << "ACCOUNT" << "\n";
+		saveData << accounts.at(i)->GetCreated() << "\n";
+		saveData << accounts.at(i)->GetEmail() << "\n";
+		saveData << accounts.at(i)->GetPassword() << "\n";
+
+		int numOfUsers = (GetCurrentAccount()->users.length());
+		for (int i = 0; i < numOfUsers; ++i)
 		{
-			int test = i;
-			saveData << "ACCOUNT-PLAYER" << "\n";
-			saveData << GetCurrentAccount()->users.getAt(test)->GetCreated() << "\n";
-			saveData << GetCurrentAccount()->users.getAt(test)->GetUsername() << "\n";
-			saveData << GetCurrentAccount()->users.getAt(test)->GetPassword() << "\n";
-			saveData << GetCurrentAccount()->users.getAt(test)->GetCredit() << "\n";
+			if (GetCurrentAccount()->users.getAt(i)->GetRole() == "Player")
+			{
+				int test = i;
+				saveData << "ACCOUNT-PLAYER" << "\n";
+				saveData << GetCurrentAccount()->users.getAt(test)->GetCreated() << "\n";
+				saveData << GetCurrentAccount()->users.getAt(test)->GetUsername() << "\n";
+				saveData << GetCurrentAccount()->users.getAt(test)->GetPassword() << "\n";
+				saveData << GetCurrentAccount()->users.getAt(test)->GetCredit() << "\n";
+				//Add this accounts Library Items
+				Player* thisUser = dynamic_cast<Player*>(accounts.at(0)->users.getAt(i));
+				for (int i = 0; i < thisUser->getLibrary().size(); i++)
+				{
+					saveData << "LIBRARY-ITEM" << "\n";
+					saveData << thisUser->getLibrary().at(i)->GetGame()->GetId() << "\n";
+					saveData << thisUser->getLibrary().at(i)->GetPurchaseDate() << "\n";
+					saveData << thisUser->getLibrary().at(i)->GetPlaytime() << "\n";
+				}
+			}
+			if (GetCurrentAccount()->users.getAt(i)->GetRole() == "Admin")
+			{
+				int test = i;
+				saveData << "ACCOUNT-ADMIN" << "\n";
+				saveData << GetCurrentAccount()->users.getAt(test)->GetCreated() << "\n";
+				saveData << GetCurrentAccount()->users.getAt(test)->GetUsername() << "\n";
+				saveData << GetCurrentAccount()->users.getAt(test)->GetPassword() << "\n";
+				saveData << GetCurrentAccount()->users.getAt(test)->GetCredit() << "\n";
+				Player* thisUser = dynamic_cast<Player*>(accounts.at(0)->users.getAt(i));
+				for (int i = 0; i < thisUser->getLibrary().size(); i++)
+				{
+					saveData << "LIBRARY-ITEM" << "\n";
+					saveData << thisUser->getLibrary().at(i)->GetGame()->GetId() << "\n";
+					saveData << thisUser->getLibrary().at(i)->GetPurchaseDate() << "\n";
+					saveData << thisUser->getLibrary().at(i)->GetPlaytime() << "\n";
+				}
+			}
 		}
-		if (GetCurrentAccount()->users.getAt(i)->GetRole() == "Admin")
-		{
-			int test = i;
-			saveData << "ADMIN" << "\n";
-			saveData << GetCurrentAccount()->users.getAt(test)->GetCreated() << "\n";
-			saveData << GetCurrentAccount()->users.getAt(test)->GetUsername() << "\n";
-			saveData << GetCurrentAccount()->users.getAt(test)->GetPassword() << "\n";
-			saveData << GetCurrentAccount()->users.getAt(test)->GetCredit() << "\n";
-
-
-			saveData << GetLibrary()->getPlayersLibrary().at(test)->GetGame() << "\n";
-
-
-
-
-		}
-
 	}
-
+	saveData << "EOF";
 	saveData.close();
-
-
 }
+
 void Application::Load()
 {
 	int i;
@@ -328,11 +347,6 @@ Account* Application::GetCurrentAccount() const
 {
 	return currentAccount;
 }
-Player* Application::GetLibrary() const
-{
-	return library;
-}
-
 
 User* Application::GetCurrentUser() const
 {

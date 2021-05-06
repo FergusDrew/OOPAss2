@@ -31,7 +31,7 @@ void GameMenu::OutputOptions()
 		else
 		{
 			Line();
-			Line("Account Balance: " + player->GetCredit());
+			Line("Account Balance: " + Utils::CastToCredit(player->GetCredit()));
 			Line();
 			Option('P', "Purchase Game");
 		}

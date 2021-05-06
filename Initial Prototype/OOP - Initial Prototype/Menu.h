@@ -3,7 +3,6 @@
 #include "Application.h"
 #include <iostream>
 #include <string>
-#include "player.h"
 
 using namespace std;
 
@@ -36,5 +35,4 @@ private:
 	std::string title;
 	void Header();
 	void Footer();
-
 };

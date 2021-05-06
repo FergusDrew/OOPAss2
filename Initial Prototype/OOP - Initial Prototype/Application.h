@@ -17,6 +17,7 @@ class Application
 	public:
 		Application();
 		~Application();
+
 		void Save();
 		void Load();
 		bool IsAccountLoggedIn() const;
@@ -24,7 +25,6 @@ class Application
 		Account* GetCurrentAccount() const;
 		User* GetCurrentUser() const;
 		Game* GetSelectedGame() const;
-		Player* GetLibrary() const;
 		Store& GetStore();
 		
 		bool SelectGame(const std::string& name);
@@ -36,6 +36,5 @@ class Application
 		Store store;
 		Account* currentAccount;
 		User* currentUser;
-		Player* library;
 		Game* selectedGame;
 };
