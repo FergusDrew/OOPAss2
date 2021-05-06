@@ -14,20 +14,45 @@ void GameMenu::OutputOptions()
 
 	if (app->IsUserLoggedIn())
 	{
-		Line();
-		Line("Account Balance: ");
-		Line();
-		Option('P', "Purchase Game");
+		for (int i = 0; i < player->getLibrary().size(); i++)
+		{
+			if (app->GetSelectedGame()->GetId() == player->getLibrary().at(i)->GetGame()->GetId())
+			{
+				isOwned = true;
+			}
+			else isOwned = false;
+		}
+		if (isOwned == true)
+		{
+			Line();
+			Line("Game Already Owned");
+			Line();
+		}
+		else
+		{
+			Line();
+			Line("Account Balance: " + player->GetCredit());
+			Line();
+			Option('P', "Purchase Game");
+		}
 	}
 }
 
 bool GameMenu::HandleChoice(char choice)
 {
-	int index = choice - '1';
-
-	if (index >= 0 && index < 3)
+	switch (choice)
 	{
+	case 'P':
+	{
+		Date* date = new Date;
+		std::string currDate = date->currentDate();
 
+		int i = app->GetSelectedGame()->GetId();
+		Game* game = app->GetStore().games.getAt(i);
+		LibraryItem* item = new LibraryItem(currDate, game, 0);
+		player->addLibraryItem(item);
+	} break;
 	}
+
 	return false;
 }

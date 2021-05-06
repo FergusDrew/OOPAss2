@@ -25,17 +25,36 @@ void Player::AddCredit(int& val)
 	credit = credit + val;
 }
 
-const List<LibraryItem*> Player::getPlayersLibrary() const
+const std::vector <LibraryItem*> Player::getPlayersLibrary() const
 {
 	return library;
 }
 
-List<LibraryItem*> Player::getLibrary() const
+std::vector <LibraryItem*> Player::getLibrary() const
 {
 	return library;
 }
 
 void Player::addLibraryItem(LibraryItem* item)
 {
-	library.addAtEnd(item);
+	library.push_back(item);
+}
+
+bool Player::compareNames(std::string a, std::string b)
+{
+
+}
+
+std::vector <LibraryItem*> Player::sortByDate() const
+{
+
+}
+std::vector <LibraryItem*> Player::sortByName() const
+{
+	for (int i = 0; i < library.size(); i++)
+	{
+		//populate vector of names with each game name
+		std::vector<std::string> nameOrdered;
+		nameOrdered.push_back(library.at(i)->GetGame()->GetName());
+	}
 }

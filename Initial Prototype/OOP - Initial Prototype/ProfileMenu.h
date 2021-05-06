@@ -5,6 +5,7 @@
 #include "Utils.h"
 #include "LibraryItem.h"
 
+
 class ProfileMenu : public Menu
 {
 public:
@@ -13,7 +14,8 @@ public:
 	bool HandleChoice(char choice) final;
 	const int IncreaseCredits(int ammount);
 private:
+	//Player* player = dynamic_cast<Player*>(app->GetCurrentUser());
 	Player* player = dynamic_cast<Player*>(app->GetCurrentUser());
-	
+	//List<LibraryItem*> items = player->getPlayersLibrary();
 	//const int credit = 0;
 };

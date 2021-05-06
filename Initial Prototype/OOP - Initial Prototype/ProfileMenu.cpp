@@ -21,11 +21,13 @@ void ProfileMenu::OutputOptions()
 	Line();
 	Line("GAMES");
 
-	List<LibraryItem*> items = player->getPlayersLibrary();
-	for (int i = 0; i < items.length(); i++)
+	for (int i = 0; i < player->getLibrary().size(); i++)
 	{
-		Option(i + 1, items.getAt(i)->GetGame()->GetName());
+		Option(i + 1, player->getLibrary().at(i)->GetGame()->GetName());
 	}
+	Line();
+	Option('N', "Sort By Name");
+	Option('D', "Sort By Date");
 }
 
 bool ProfileMenu::HandleChoice(char choice)

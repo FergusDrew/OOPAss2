@@ -14,11 +14,10 @@ class Date
 public:
 	Date();
 	~Date();
-	void currentDate();
+	string currentDate();
 	int GetDay();
 	int GetMonth();
 	int GetYear();
-
 
 private:
 	int month;

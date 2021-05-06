@@ -25,8 +25,7 @@ int Date::GetYear()
 	return year;
 }
 
-
-void Date::currentDate()
+string Date::currentDate()
 {
 	time_t const now_c = time(0);
 	tm* ltm = localtime(&now_c);
@@ -42,6 +41,9 @@ void Date::currentDate()
 	year = stoi(s);
 	month = stoi(s1);
 	day = stoi(s2);
+	string dateNow = s2 + "-" + s1 + "-" + s;
+
+	return dateNow;
 }
 
 
