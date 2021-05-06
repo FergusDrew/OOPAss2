@@ -11,7 +11,55 @@ Application::~Application()
 		delete accounts[i];
 	}
 }
+void Application::Save()
+{
+	std::ofstream saveData;
+	saveData.open("data1.txt");
+	int numOfGames = (GetStore().games.length());
+	for (int i = 0; i < numOfGames; ++i)
+	{
+		saveData << "GAME" << "\n";
+		saveData << GetStore().games.getAt(i)->GetId() << "\n";
+		saveData << GetStore().games.getAt(i)->GetName() << "\n";
+		saveData << GetStore().games.getAt(i)->GetDescription() << "\n";
+		saveData << GetStore().games.getAt(i)->GetCost() << "\n";
+		saveData << GetStore().games.getAt(i)->GetRating() << "\n";
+	}
+	int numOfUsers = (GetCurrentAccount()->users.length());
+	for (int i = 0; i < numOfUsers; ++i)
+	{
+		if (GetCurrentAccount()->users.getAt(i)->GetRole() == "Player")
+		{
+			int test = i;
+			saveData << "ACCOUNT-PLAYER" << "\n";
+			saveData << GetCurrentAccount()->users.getAt(test)->GetCreated() << "\n";
+			saveData << GetCurrentAccount()->users.getAt(test)->GetUsername() << "\n";
+			saveData << GetCurrentAccount()->users.getAt(test)->GetPassword() << "\n";
+			saveData << GetCurrentAccount()->users.getAt(test)->GetCredit() << "\n";
+		}
+		if (GetCurrentAccount()->users.getAt(i)->GetRole() == "Admin")
+		{
+			int test = i;
+			saveData << "ADMIN" << "\n";
+			saveData << GetCurrentAccount()->users.getAt(test)->GetCreated() << "\n";
+			saveData << GetCurrentAccount()->users.getAt(test)->GetUsername() << "\n";
+			saveData << GetCurrentAccount()->users.getAt(test)->GetPassword() << "\n";
+			saveData << GetCurrentAccount()->users.getAt(test)->GetCredit() << "\n";
 
+
+			saveData << GetLibrary()->getPlayersLibrary().at(test)->GetGame() << "\n";
+
+
+
+
+		}
+
+	}
+
+	saveData.close();
+
+
+}
 void Application::Load()
 {
 	int i;
@@ -280,6 +328,11 @@ Account* Application::GetCurrentAccount() const
 {
 	return currentAccount;
 }
+Player* Application::GetLibrary() const
+{
+	return library;
+}
+
 
 User* Application::GetCurrentUser() const
 {
