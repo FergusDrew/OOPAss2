@@ -13,6 +13,7 @@ public:
 	void OutputOptions() final;
 	bool HandleChoice(char choice) final;
 	const int IncreaseCredits(int ammount);
+	const int ChangeRating(int val, int tempindex);
 private:
 	//Player* player = dynamic_cast<Player*>(app->GetCurrentUser());
 	Player* player = dynamic_cast<Player*>(app->GetCurrentUser());

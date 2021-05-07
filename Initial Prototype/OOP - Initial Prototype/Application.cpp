@@ -96,8 +96,10 @@ void Application::Load()
 			std::string desc;
 			int price;
 			int ageRating;
+			int likes;
+			int dislikes;
 
-			for (i = 0; i < 5; i++)
+			for (i = 0; i < 7; i++)
 			{
 				getline(data, line);
 				switch (i)
@@ -117,11 +119,17 @@ void Application::Load()
 				case 4:
 					ageRating = stoi(line);
 					break;
+				case 5:
+					likes = stoi(line);
+					break;
+				case 6:
+					dislikes = stoi(line);
+					break;
 				default:
 					break;
 				}
 			}
-			GetStore().games.addAtEnd(new Game(id, name, desc, price, ageRating));
+			GetStore().games.addAtEnd(new Game(id, name, desc, price, ageRating, likes, dislikes));
 			getline(data, line);
 		}
 
@@ -212,8 +220,9 @@ void Application::Load()
 					int id;
 					std::string date;
 					int playTime;
+					int rating;
 
-					for (i = 0; i < 3; i++)
+					for (i = 0; i < 4; i++)
 					{
 						getline(data, line);
 						switch (i)
@@ -227,6 +236,9 @@ void Application::Load()
 						case 2:
 							playTime = std::stoi(line);
 							break;
+						case 3:
+							rating = std::stoi(line);
+							break;
 						default:
 							break;
 						}
@@ -234,7 +246,7 @@ void Application::Load()
 
 					Player* thisUser = dynamic_cast<Player*>(accounts.at(0)->users.getAt(user));
 					Game* game = GetStore().games.getAt(id);
-					thisUser->addLibraryItem((new LibraryItem(date, game, playTime)));
+					thisUser->addLibraryItem((new LibraryItem(date, game, playTime, rating)));
 
 					getline(data, line);
 				}
@@ -301,8 +313,9 @@ void Application::Load()
 					int id;
 					std::string date;
 					int playTime;
+					int rating;
 
-					for (i = 0; i < 3; i++)
+					for (i = 0; i < 4; i++)
 					{
 						getline(data, line);
 						switch (i)
@@ -316,6 +329,9 @@ void Application::Load()
 						case 2:
 							playTime = std::stoi(line);
 							break;
+						case 3:
+							rating = std::stoi(line);
+							break;
 						default:
 							break;
 						}
@@ -323,7 +339,7 @@ void Application::Load()
 
 					Player* thisUser = dynamic_cast<Player*>(accounts.at(0)->users.getAt(user));
 					Game* game = GetStore().games.getAt(id);
-					thisUser->addLibraryItem((new LibraryItem(date, game, playTime)));
+					thisUser->addLibraryItem((new LibraryItem(date, game, playTime, rating)));
 
 					getline(data, line);
 				}

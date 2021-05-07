@@ -25,13 +25,13 @@ void ProfileMenu::OutputOptions()
 	{
 		Utils m;
 		int num = player->getLibrary().at(i)->GetPlaytime();
+		int num2 = player->getLibrary().at(i)->GetRating();
 
 		string str;
 		m.fullplayTime(num, str);
+		string str2 = to_string(num2);
 
-
-
-		Option2(i + 1, player->getLibrary().at(i)->GetGame()->GetName(), str);
+		Option2(i + 1, player->getLibrary().at(i)->GetGame()->GetName(), str, str2);
 	}
 	Line();
 	Option('N', "Sort By Name");
@@ -71,6 +71,24 @@ bool ProfileMenu::HandleChoice(char choice)
 	{
 		player->sortByDate();
 	} break;
+	case 'R':
+	{
+		Question("Which Game Do You Wish To Rate? " ": ");
+		int index2 = choice - '1';
+		if (index2 >= 0 && index2 < player->getLibrary().size())
+		{
+
+			Question("1 for good 2 for bad for game " ": ");
+			if (index2 == 1)
+			{
+				ChangeRating(1, 1);
+			}
+			if (index2 == 2)
+			{
+				ChangeRating(2, 2);
+			}
+		}
+	} break;
 	}
 
 	int index = choice - '1';
@@ -88,7 +106,12 @@ bool ProfileMenu::HandleChoice(char choice)
 
 	return false;
 }
+const int ProfileMenu::ChangeRating(int val, int indexTemp)
+{
 
+	player->getLibrary().at(indexTemp)->ChangeRating(val);
+	return player->getLibrary().at(indexTemp)->GetRating();
+}
 const int ProfileMenu::IncreaseCredits(int ammount) 
 {
 	player->AddCredit(ammount);

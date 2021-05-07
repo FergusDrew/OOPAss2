@@ -55,7 +55,7 @@ bool GameMenu::HandleChoice(char choice)
 
 			int i = app->GetSelectedGame()->GetId();
 			Game* game = app->GetStore().games.getAt(i);
-			LibraryItem* item = new LibraryItem(currDate, game, 0);
+			LibraryItem* item = new LibraryItem(currDate, game, 0, 0);
 			int price = app->GetSelectedGame()->GetCost();
 			if (player->GetCredit() < price)
 			{

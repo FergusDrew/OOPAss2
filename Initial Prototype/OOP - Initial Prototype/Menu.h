@@ -24,13 +24,12 @@ public:
 protected:
 	Application* app;                                   // each menu will store a pointer to the main application
 														// this way menus can access all the data required
-
 	void Line();										// output blank line
 	void Line(const std::string& text);					// output a message
 	void Option(int id, const std::string& option);		// output menu option
 	void Option(char id, const std::string& option);	// output menu option
-	void Option2(int id, const std::string& option2, const std::string& text);		// output menu option
-	void Option2(char id, const std::string& option2, const std::string& text);	// output menu option
+	void Option2(int id, const std::string& option2, const std::string& text, const std::string& text2);		// output menu option
+	void Option2(char id, const std::string& option2, const std::string& text, const std::string& text2);	// output menu option
 	std::string Question(const std::string& question);	// output a question and return the user's input
 	void BlockingMessage(const std::string& message);	// output message and wait for the user to press enter
 private:

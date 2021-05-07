@@ -1,14 +1,12 @@
 #include "LibraryItem.h"
 
-LibraryItem::LibraryItem(const std::string& date, Game* game, int playtime) : purchased(date), game(game), playtime(playtime)
+LibraryItem::LibraryItem(const std::string& date, Game* game, int playtime, int rating) : purchased(date), game(game), playtime(playtime), rating(rating)
 {
 }
 
 LibraryItem::~LibraryItem()
 {
 }
-
-
 
 Game* LibraryItem::GetGame() 
 {
@@ -23,4 +21,12 @@ const std::string& LibraryItem::GetPurchaseDate() const
 int& LibraryItem::GetPlaytime()
 {
 	return playtime;
+}
+int& LibraryItem::GetRating()
+{
+	return rating;
+}
+void LibraryItem::ChangeRating(int& val)
+{
+	rating = rating + val;
 }
