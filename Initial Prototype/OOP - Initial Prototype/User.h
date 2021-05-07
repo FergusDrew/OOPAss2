@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include "date.h"
 
 class User
 {
@@ -16,7 +17,9 @@ class User
 			;
 		
 	private:
+		Date m;
 		std::string username;
 		std::string password;
-		std::string created;  // TODO: replace with custom Date class, currently YYYY-MM-DD
+		std::string created = m.SplitDate(created);
+			
 };

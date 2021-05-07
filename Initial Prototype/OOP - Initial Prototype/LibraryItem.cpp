@@ -18,7 +18,7 @@ const std::string& LibraryItem::GetPurchaseDate() const
 	return purchased;
 }
 
-const int& LibraryItem::GetPlaytime() const
+int& LibraryItem::GetPlaytime() 
 {
 	return playtime;
 }

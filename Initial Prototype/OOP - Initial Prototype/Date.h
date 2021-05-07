@@ -15,12 +15,12 @@ public:
 	Date();
 	~Date();
 	string currentDate();
-	int GetDay();
-	int GetMonth();
-	int GetYear();
-
+	string SplitDate(string date);
 private:
-	int month;
-	int day;
-	int year;
+	string month;
+	string day;
+	string year;
+
+
+
 };

@@ -51,6 +51,7 @@ bool GameMenu::HandleChoice(char choice)
 		Game* game = app->GetStore().games.getAt(i);
 		LibraryItem* item = new LibraryItem(currDate, game, 0);
 		player->addLibraryItem(item);
+		if (isOwned) break;
 	} break;
 	}
 

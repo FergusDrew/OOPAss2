@@ -76,9 +76,11 @@ bool StoreMenu::HandleChoice(char choice)
 	//if (choice >= '1' || choice <= '5')
 	if (index >= 0 && index < app->GetStore().games.length())
 	{
+		int temp = 0;  /* for the recursion toupper function in Utils */
+		Utils m;
 		index = index + (5 * (page - 1));
 		app->SelectGame(app->GetStore().games.getAt(index)->GetName());
-		GameMenu(app->GetStore().games.getAt(index)->GetName(), app);
+		GameMenu(m.toUpperTwo(app->GetStore().games.getAt(index)->GetName(), temp), app);
 	}
 
 	

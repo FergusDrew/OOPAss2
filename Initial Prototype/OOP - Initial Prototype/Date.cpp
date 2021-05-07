@@ -1,8 +1,18 @@
 #include "Date.h"
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <regex>
+#include <algorithm>
+#include <iterator>
+#include <cstring>
+#include <forward_list>
+#include <deque>
 
-Date::Date() : day(0), month(0), year(0)
+Date::Date() : year(""), month(""), day("")
 {
-
+	
 }
 
 Date::~Date()
@@ -10,20 +20,26 @@ Date::~Date()
 
 }
 
-int Date::GetDay()
+
+std::string Date::SplitDate(string date)
 {
-	return day;
+    vector<string> aryr;
+	stringstream s_stream(date);
+	while (s_stream.good()) {
+		string substr;
+		getline(s_stream, substr, '-'); 
+		aryr.push_back(substr);
+	}
+
+	year = aryr[2];
+	month = aryr[1];
+	day = aryr[0];
+
+	date = aryr[2] + "/" + aryr[1] + "/" + aryr[0];
+
+	return date;
 }
 
-int Date::GetMonth()
-{
-	return month;
-}
-
-int Date::GetYear()
-{
-	return year;
-}
 
 string Date::currentDate()
 {
@@ -38,10 +54,10 @@ string Date::currentDate()
 	string s1 = ss1.str();
 	string s2 = ss2.str();
 
-	year = stoi(s);
-	month = stoi(s1);
-	day = stoi(s2);
-	string dateNow = s2 + "-" + s1 + "-" + s;
+	int year = stoi(s);
+	int month = stoi(s1);
+	int day = stoi(s2);
+	string dateNow = s2 + "/" + s1 + "/" + s;
 
 	return dateNow;
 }

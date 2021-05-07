@@ -20,6 +20,7 @@ const std::string& User::GetPassword() const
 
 const std::string& User::GetCreated() const
 {
+
 	return created;
 }
 
