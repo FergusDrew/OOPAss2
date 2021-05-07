@@ -26,6 +26,8 @@ void Application::Save()
 		saveData << GetStore().games.getAt(i)->GetDescription() << "\n";
 		saveData << GetStore().games.getAt(i)->GetCost() << "\n";
 		saveData << GetStore().games.getAt(i)->GetRating() << "\n";
+		saveData << GetStore().games.getAt(i)->GetLikes() << "\n";
+		saveData << GetStore().games.getAt(i)->GetDislikes() << "\n";
 	}
 	//Number of Accounts -> first acc data
 	for (int i = 0; i < accounts.size(); i++)
@@ -54,6 +56,7 @@ void Application::Save()
 					saveData << thisUser->getLibrary().at(i)->GetGame()->GetId() << "\n";
 					saveData << thisUser->getLibrary().at(i)->GetPurchaseDate() << "\n";
 					saveData << thisUser->getLibrary().at(i)->GetPlaytime() << "\n";
+					saveData << thisUser->getLibrary().at(i)->GetRating() << "\n";
 				}
 			}
 			if (GetCurrentAccount()->users.getAt(i)->GetRole() == "Admin")
@@ -71,6 +74,7 @@ void Application::Save()
 					saveData << thisUser->getLibrary().at(i)->GetGame()->GetId() << "\n";
 					saveData << thisUser->getLibrary().at(i)->GetPurchaseDate() << "\n";
 					saveData << thisUser->getLibrary().at(i)->GetPlaytime() << "\n";
+					saveData << thisUser->getLibrary().at(i)->GetRating() << "\n";
 				}
 			}
 		}
