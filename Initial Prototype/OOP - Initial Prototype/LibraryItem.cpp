@@ -8,6 +8,8 @@ LibraryItem::~LibraryItem()
 {
 }
 
+
+
 Game* LibraryItem::GetGame() 
 {
 	return game;
@@ -18,7 +20,7 @@ const std::string& LibraryItem::GetPurchaseDate() const
 	return purchased;
 }
 
-int& LibraryItem::GetPlaytime() 
+int& LibraryItem::GetPlaytime()
 {
 	return playtime;
 }

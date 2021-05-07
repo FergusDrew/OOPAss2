@@ -52,7 +52,6 @@ void Menu::Option(char id, const std::string& option)
 	std::cout << "  " << id << ") " << option << '\n';
 }
 
-
 void Menu::Option(int id, const std::string& option)
 {
 	// shift the integer value up to the correct position in the ascii table
@@ -62,7 +61,7 @@ void Menu::Option(int id, const std::string& option)
 
 void Menu::Option2(char id, const std::string& option2, const std::string& text)
 {
-	std::cout << "  " << id << ") " << option2 << " " <<text <<'\n';
+	std::cout << "  " << id << ") " << option2 << " " << text << '\n';
 }
 
 
@@ -72,8 +71,6 @@ void Menu::Option2(int id, const std::string& option2, const std::string& text)
 	char ascii = id + '0';
 	Option2(ascii, option2, text);
 }
-
-
 
 std::string Menu::Question(const std::string& question)
 {

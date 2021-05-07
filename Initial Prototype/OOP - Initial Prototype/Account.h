@@ -16,6 +16,5 @@ public:
 private:
 	std::string email;
 	std::string password;
-	Date m;
-	std::string created = m.SplitDate(created);
+	std::string created;  // TODO: replace with custom Date class, currently YYYY-MM-DD
 };

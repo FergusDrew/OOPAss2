@@ -5,6 +5,7 @@
 #include "Store.h"
 #include <string>
 #include <vector>
+//#include "SearchMenu.h"
 
 class StoreMenu : public Menu
 {

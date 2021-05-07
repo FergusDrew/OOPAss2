@@ -159,6 +159,8 @@
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="ProfileMenu.cpp" />
+    <ClCompile Include="ResultMenu.cpp" />
+    <ClCompile Include="SearchMenu.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Store.cpp" />
     <ClCompile Include="StoreMenu.cpp" />
@@ -179,6 +181,8 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="ProfileMenu.h" />
+    <ClInclude Include="ResultMenu.h" />
+    <ClInclude Include="SearchMenu.h" />
     <ClInclude Include="Store.h" />
     <ClInclude Include="StoreMenu.h" />
     <ClInclude Include="User.h" />

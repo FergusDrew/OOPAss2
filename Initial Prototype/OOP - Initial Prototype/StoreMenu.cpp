@@ -51,13 +51,11 @@ void StoreMenu::OutputOptions()
 
 bool StoreMenu::HandleChoice(char choice)
 {
-	
 	switch (choice)
 	{
 	case 'S':
 	{
-		BlockingMessage("Not implemented, press return to continue");
-		//SearchGames
+		//SearchMenu("Search Store", app);
 	} break;
 	case 'N':
 	{
@@ -76,13 +74,12 @@ bool StoreMenu::HandleChoice(char choice)
 	//if (choice >= '1' || choice <= '5')
 	if (index >= 0 && index < app->GetStore().games.length())
 	{
-		int temp = 0;  /* for the recursion toupper function in Utils */
-		Utils m;
 		index = index + (5 * (page - 1));
 		app->SelectGame(app->GetStore().games.getAt(index)->GetName());
-		GameMenu(m.toUpperTwo(app->GetStore().games.getAt(index)->GetName(), temp), app);
+		int temp = 0;  /* for the recursion toupper function in Utils */
+
+		GameMenu(Utils::toUpperTwo(app->GetStore().games.getAt(index)->GetName(), temp), app);
 	}
 
-	
 	return false;
 }

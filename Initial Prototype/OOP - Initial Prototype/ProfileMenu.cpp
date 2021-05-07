@@ -21,8 +21,6 @@ void ProfileMenu::OutputOptions()
 	Line();
 	Line("GAMES");
 
-	
-
 	for (int i = 0; i < player->getLibrary().size(); i++)
 	{
 		Utils m;
@@ -31,15 +29,13 @@ void ProfileMenu::OutputOptions()
 		string str;
 		m.fullplayTime(num, str);
 
-		
+
 
 		Option2(i + 1, player->getLibrary().at(i)->GetGame()->GetName(), str);
-
-	
 	}
 	Line();
 	Option('N', "Sort By Name");
-	Option('D', "Sort By Date");
+	Option('L', "Sort By Date");
 }
 
 bool ProfileMenu::HandleChoice(char choice)
@@ -57,17 +53,26 @@ bool ProfileMenu::HandleChoice(char choice)
 	} break;
 	case 'I':
 	{
-		IncreaseCredits(1);
+		IncreaseCredits(100);
 	} break;
 	case 'O':
 	{
-		IncreaseCredits(10);
+		IncreaseCredits(1000);
 	} break;
 	case 'P':
 	{
-		IncreaseCredits(100);
+		IncreaseCredits(10000);
+	} break;
+	case 'N':
+	{
+		//player->sortByName();
+	} break;
+	case 'L':
+	{
+		player->sortByDate();
 	} break;
 	}
+
 	int index = choice - '1';
 	// since we are using numbers here we shift the char down by '1'
 	// this puts '1' as 0, '2' as 1, '3' as 2, '4' as 3, etc.
@@ -76,10 +81,11 @@ bool ProfileMenu::HandleChoice(char choice)
 	//if (choice >= '1' || choice <= '5')
 	if (index >= 0 && index < player->getLibrary().size())
 	{
-		int temp = 0;  
+		int temp = 0;
 		Utils m;
 		player->getLibrary().at(index)->GetPlaytime() += m.randomrangeNum(temp);
 	}
+
 	return false;
 }
 

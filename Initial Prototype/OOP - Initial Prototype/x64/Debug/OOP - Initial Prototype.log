@@ -1,16 +1,6 @@
-﻿  Account.cpp
-  Admin.cpp
-  Application.cpp
-  Date.cpp
-C:\Users\xilsn\Documents\GitHub\OOPAss2\Initial Prototype\OOP - Initial Prototype\Date.cpp(40,12): error C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  GameMenu.cpp
-  LoginUserMenu.cpp
-  MainMenu.cpp
-  Menu.cpp
-  Player.cpp
-  ProfileMenu.cpp
-  Source.cpp
-  StoreMenu.cpp
-  User.cpp
+﻿  StoreMenu.cpp
+  Utils.cpp
+C:\Users\fdemp\Desktop\Initial Prototype\OOP - Initial Prototype\Utils.cpp(27,11): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\fdemp\Desktop\Initial Prototype\OOP - Initial Prototype\Utils.cpp(37,11): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
   Generating Code...
-C:\Users\xilsn\Documents\GitHub\OOPAss2\Initial Prototype\OOP - Initial Prototype\MainMenu.cpp(71): warning C4715: 'MainMenu::HandleChoice': not all control paths return a value
+  OOP - Initial Prototype.vcxproj -> C:\Users\fdemp\Desktop\Initial Prototype\x64\Debug\OOP - Initial Prototype.exe

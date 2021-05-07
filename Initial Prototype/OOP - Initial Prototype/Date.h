@@ -5,7 +5,6 @@
 #include <chrono>
 #include <iomanip>
 #include <iostream>
-#include <regex>
 using namespace std;
 using std::chrono::system_clock;
 
@@ -16,9 +15,12 @@ public:
 	Date();
 	~Date();
 	string currentDate();
-	string SplitDate(string date);
+	int GetDay();
+	int GetMonth();
+	int GetYear();
+
 private:
-	string month;
-	string day;
-	string year;
+	int month;
+	int day;
+	int year;
 };

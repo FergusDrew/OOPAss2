@@ -12,6 +12,16 @@ char Utils::GetCharFromUser()
 	return toupper(GetLineFromUser()[0]);
 }
 
+const std::string Utils::toLower(const std::string& text)
+{
+	std::string temp;
+	for (int i = 0; i < text.length(); i++)
+	{
+		temp += tolower(text[i]);
+	}
+	return temp;
+}
+
 std::string Utils::CastToPrice(int price)
 {
 	float n1 = price;
@@ -24,12 +34,25 @@ std::string Utils::CastToPrice(int price)
 
 std::string Utils::CastToCredit(const int credits)
 {
+	float n1 = credits;
+	n1 = n1 / 100;
+	std::stringstream sstream;
+	sstream << n1;
+	std::string num_str = sstream.str();
+	return num_str;
+	/*
 	const int credit = credits;
 	std::stringstream sstream;
 	sstream << credit;
 	std::string num_str = sstream.str() + ".00";
-	return num_str;
+	return num_str*/
 }
+
+bool Utils::contains(std::string name, std::string text)
+{
+	return name.find(text);
+}
+
 std::string Utils::toUpperOne(std::string caps)
 {
 
@@ -82,5 +105,3 @@ std::string Utils::fullplayTime(int time, std::string& playtime)
 
 	return playtime;
 }
-
-

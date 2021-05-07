@@ -6,6 +6,7 @@
 #include "List.h"
 #include <vector>
 #include <algorithm>
+#include <iterator>
 
 class Player : public User
 {
@@ -15,12 +16,12 @@ class Player : public User
 		const int& GetCredit() const;
 		const std::string& GetRole() const;
 		void AddCredit(int& val);
+		void DecreaseCredit(int& val);
 		const std::vector <LibraryItem*> getPlayersLibrary() const;
 		std::vector <LibraryItem*> getLibrary() const;
 		void addLibraryItem(LibraryItem* item);
-		//bool compareNames(std::string a, std::string b);
-		//std::vector <LibraryItem*> sortByDate() const;
-		//std::vector <LibraryItem*> sortByName() const;
+		void sortByDate();
+		void sortByName();
 	private:
 		std::vector <LibraryItem*> library;
 		//List<LibraryItem*> library; This doesnt really work once out of scope it destrys the list 

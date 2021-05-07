@@ -25,6 +25,11 @@ void Player::AddCredit(int& val)
 	credit = credit + val;
 }
 
+void Player::DecreaseCredit(int& val)
+{
+	credit = credit - val;
+}
+
 const std::vector <LibraryItem*> Player::getPlayersLibrary() const
 {
 	return library;
@@ -39,22 +44,34 @@ void Player::addLibraryItem(LibraryItem* item)
 {
 	library.push_back(item);
 }
-/*
-bool Player::compareNames(std::string a, std::string b)
-{
 
+void Player::sortByDate()
+{
+	std::sort(library.begin(), library.end(), [](const LibraryItem* first, const LibraryItem* last)
+		{
+			return first->GetPurchaseDate() < last->GetPurchaseDate();
+		});
 }
 
-std::vector <LibraryItem*> Player::sortByDate() const
+void Player::sortByName()
 {
-
-}
-std::vector <LibraryItem*> Player::sortByName() const
-{
+	std::vector <Game*> names;
 	for (int i = 0; i < library.size(); i++)
 	{
-		//populate vector of names with each game name
-		std::vector<std::string> nameOrdered;
-		nameOrdered.push_back(library.at(i)->GetGame()->GetName());
+		names.push_back(library.at(i)->GetGame()); //Populate names vector with games in player library 
 	}
-}*/
+
+	std::sort(names.begin(), names.end(), [](const Game* first, const Game* last)
+		{
+			return first->GetName() < last->GetName();
+		});
+
+	std::vector <LibraryItem*> librarycopy;
+	for (int i = 0; i < names.size(); i++)
+	{
+		if (library.at(i)->GetGame() == names.at(i))
+			librarycopy.push_back(library.at(i));
+	}
+
+	std::copy(librarycopy.begin(), librarycopy.end(), back_inserter(library));
+}

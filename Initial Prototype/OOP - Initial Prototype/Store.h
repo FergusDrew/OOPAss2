@@ -1,6 +1,7 @@
 #pragma once
 #include "List.h"
 #include "Game.h"
+#include "Utils.h"
 
 class Store
 {
@@ -8,7 +9,9 @@ class Store
 		Store();
 		~Store();
 		List<Game*> games;
-		//Game* games[14] = { }; // TODO: should be a dynamic collection
+		void SearchName(std::string& searchdata);
+		List<Game*> SearchPrice(std::string& searchdata);
+		List<Game*> matches;
 	private:
 
 };

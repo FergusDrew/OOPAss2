@@ -16,5 +16,6 @@ public:
 private:
 	Player* player = dynamic_cast<Player*>(app->GetCurrentUser());
 	bool isOwned;
+	bool tooExpensive;
 };
 
