@@ -105,3 +105,16 @@ std::string Utils::fullplayTime(int time, std::string& playtime)
 
 	return playtime;
 }
+std::string Utils::percentRating(int like, int dislike, std::string& percent)
+{
+
+	/*int one = dislike / like;
+	int two = dislike % like;
+	two = two * 10 / like;
+
+
+		percent = two;*/
+	
+
+	return percent;
+}

@@ -1,3 +1,4 @@
-﻿  Application.cpp
-  LINK : C:\Users\xilsn\Documents\GitHub\OOPAss2\Initial Prototype\x64\Debug\OOP - Initial Prototype.exe not found or not built by the last incremental link; performing full link
+﻿  Utils.cpp
+C:\Users\xilsn\Documents\GitHub\OOPAss2\Initial Prototype\OOP - Initial Prototype\Utils.cpp(27,11): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\xilsn\Documents\GitHub\OOPAss2\Initial Prototype\OOP - Initial Prototype\Utils.cpp(37,11): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
   OOP - Initial Prototype.vcxproj -> C:\Users\xilsn\Documents\GitHub\OOPAss2\Initial Prototype\x64\Debug\OOP - Initial Prototype.exe

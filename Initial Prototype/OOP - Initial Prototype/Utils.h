@@ -17,4 +17,5 @@ class Utils
       static std::string toUpperTwo(std::string caps, int temp);
       int randomrangeNum(int& rrnum);
       static std::string fullplayTime(int time, std::string& playtime);
+      static std::string percentRating(int like, int dislike, std::string& percent);
 };

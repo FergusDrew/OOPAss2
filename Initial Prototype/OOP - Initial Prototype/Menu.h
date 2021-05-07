@@ -30,6 +30,8 @@ protected:
 	void Option(char id, const std::string& option);	// output menu option
 	void Option2(int id, const std::string& option2, const std::string& text, const std::string& text2);		// output menu option
 	void Option2(char id, const std::string& option2, const std::string& text, const std::string& text2);	// output menu option
+	void Option3(int id, const std::string& option2, std::string& text);		// output menu option
+	void Option3(char id, const std::string& option2, std::string& text);	// output menu option
 	std::string Question(const std::string& question);	// output a question and return the user's input
 	void BlockingMessage(const std::string& message);	// output message and wait for the user to press enter
 private:

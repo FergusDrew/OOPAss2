@@ -72,6 +72,19 @@ void Menu::Option2(int id, const std::string& option2, const std::string& text, 
 	Option2(ascii, option2, text, text2);
 }
 
+void Menu::Option3(char id, const std::string& option2, std::string& text)
+{
+	std::cout << "  " << id << ") " << option2 << " " << text <<'\n';
+}
+
+
+void Menu::Option3(int id, const std::string& option2, std::string& text)
+{
+	// shift the integer value up to the correct position in the ascii table
+	char ascii = id + '0';
+	Option3(ascii, option2, text);
+}
+
 std::string Menu::Question(const std::string& question)
 {
 	std::cout << "  " << question << ": ";

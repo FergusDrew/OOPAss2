@@ -29,7 +29,11 @@ void StoreMenu::OutputOptions()
 			}
 			else
 			{
-				Option(i + 1, app->GetStore().games.getAt(x)->GetName());
+				Utils m;
+				string percent;
+				
+			
+				Option3(i + 1, app->GetStore().games.getAt(x)->GetName(), m.percentRating(app->GetStore().games.getAt(x)->GetLikes(), app->GetStore().games.getAt(x)->GetDislikes(), percent));
 				x++;
 			}
 		}
